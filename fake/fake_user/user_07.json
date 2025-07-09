@@ -1,0 +1,26 @@
+{
+  "education": {
+    "level": "석사 졸업",
+    "major": "통계학과, 인공지능",
+    "school": "인하대학교"
+  },
+  "skills": {
+    "tech_stack": [
+      "Python",
+      "Pytorch",
+      "PyG",
+      "Tensorflow",
+      "Java"
+    ],
+    "level": "중급"
+  },
+  "preferences": {
+    "desired_job": "추천 AI 엔지니어",
+    "desired_location": [
+      "서울",
+      "경기",
+      "인천"
+    ]
+  },
+  "conversation": "통계학 학부, 인공지능공학 석사를 졸업했습니다. 해외 학회 게재경험 있으며 추천시스템과 지속학습을 주로 연구했습니다. 신입으로 수도권 근무 가능한 회사가 궁금합니다."
+}
