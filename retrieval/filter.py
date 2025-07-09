@@ -9,7 +9,7 @@ def extract_job_fields(text):
 
     role    = extract(r"직무:\s*([^\n]+)")
     company = extract(r"회사:\s*([^\n]+)")
-    region  = extract(r"지역:\s*([^\n]+)", default="")  # 예시
+    region  = extract(r"지역:\s*([^\n]+)", default="")
     exp     = extract(r"(신입|경력)[^\n]*", default="기타")
     url     = extract(r"채용공고 URL:\s*(https?://\S+)", default="(No URL)")
     techs   = []
