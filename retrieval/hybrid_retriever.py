@@ -7,6 +7,9 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from db.opensearch import OpenSearchDB
 from langchain_huggingface import HuggingFaceEmbeddings
 
+
+DEFAULT_TOP_K = 5
+
 # 전역 임베딩 모델 (한 번만 초기화)
 _embedding_model = None
 
@@ -25,7 +28,7 @@ def get_embedding_model():
         print(f"✅ Embedding model initialized on {'cuda' if torch.cuda.is_available() else 'cpu'} (소요 시간: {model_load_duration:.2f}초)")
     return _embedding_model
 
-def build_hybrid_query(user_input: dict, top_k: int = 5, exclude_ids: list = None) -> dict:
+def build_hybrid_query(user_input: dict, top_k: int = DEFAULT_TOP_K, exclude_ids: list = None) -> dict:
     """
     BM25와 KNN을 결합한 하이브리드 검색 쿼리를 생성합니다.
     """
