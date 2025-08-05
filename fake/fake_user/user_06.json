@@ -1,0 +1,22 @@
+{
+  "education": {
+    "level": "대학교 졸업",
+    "major": "통계학과, 컴퓨터공학과",
+    "school": "인하대학교"
+  },
+  "skills": {
+    "tech_stack": [
+      "Python",
+      "aws",
+      "kafka"
+    ],
+    "level": "중급"
+  },
+  "preferences": {
+    "desired_job": "데이터 엔지니어",
+    "desired_location": [
+      "서울"
+    ]
+  },
+  "conversation": "수학과 박사를 졸업하고, 데이터 엔지니어 직무를 희망합니다. Python과 AWS를 다룰 줄 압니다"
+}
