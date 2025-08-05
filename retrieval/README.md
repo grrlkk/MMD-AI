@@ -9,15 +9,15 @@
 - 검색 결과 재순위화
 
 ## 구성 요소
-- `dense.py`: 임베딩 기반 검색
-- `sparse.py`: BM25 기반 키워드 검색
-- `hybrid.py`: 하이브리드 검색 구현 + Rerank
-- `reranker.py`: Cross-Encoder 기반 재순위화
+- `dense_only.py`: 임베딩 기반 검색
+- `sparse_only.py`: BM25 기반 키워드 검색
+- `hybrid_retriever.py`: 하이브리드 검색 구현 + Rerank
+
 
 ## 사용 예시
 ```python
 
-python -m hybrid.py ../fake/fake_user/user_01.json --top_k N
+python -m retrieval/hybrid_retriever
 # 검색 실행
 results = ensemble_retriever(
     query="서울 지역 프론트엔드 개발자 채용",
