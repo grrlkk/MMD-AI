@@ -1,0 +1,929 @@
+{
+  "overall": {
+    "total_queries": 394,
+    "hit_rate": 0.49746192893401014,
+    "mrr": 0.37910321489001686
+  },
+  "by_category": {
+    "CRM 마케팅": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "교육 코디네이터": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "영업 지원": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "여성 의상 디자이너": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "사업지원 매니저": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.6666666666666666
+    },
+    "데이터 분석가": {
+      "total_queries": 4,
+      "hit_rate": 0.75,
+      "mrr": 0.625
+    },
+    "소방설계": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "사업기획": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "푸드 스타일리스트": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "모바일 애플리케이션 개발": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "3D 이미지 크리에이터": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.1
+    },
+    "콘텐츠 운영": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "영업지원": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.6666666666666666
+    },
+    "청소 및 시설 관리": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "프로덕트 매니저": {
+      "total_queries": 4,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "프로젝트 디자이너": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "백엔드 개발자": {
+      "total_queries": 16,
+      "hit_rate": 0.1875,
+      "mrr": 0.075
+    },
+    "구매 및 자재 관리": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.75
+    },
+    "유아 교육 교사": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "AI 관련 인턴십": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "프로젝트 매니저": {
+      "total_queries": 6,
+      "hit_rate": 0.3333333333333333,
+      "mrr": 0.3333333333333333
+    },
+    "소셜 미디어 매니저": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.75
+    },
+    "프로모션 데이터 관리": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.25
+    },
+    "구매 관리": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "광고 기획자": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.16666666666666666
+    },
+    "글로벌 소싱": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "필드 매니저": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "경영지원": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "운영 관리자": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.125
+    },
+    "콘텐츠 제작자": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "브랜드 디자인": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.25
+    },
+    "재고 관리 전문가": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.25
+    },
+    "기술 프로젝트 매니저": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "콘텐츠 기획 및 마케팅": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "영상 편집": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.225
+    },
+    "3D 데이터 구축": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.6666666666666666
+    },
+    "의료기기 소프트웨어 인증 담당자": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.75
+    },
+    "상품 기획자": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "전략 기획": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "보안 엔지니어": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "콘텐츠 에디터": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "비주얼 머천다이징": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "브랜드 마케터": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.625
+    },
+    "안전관리자": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "조명 테크니션": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "DB 운영": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "B2B 영업": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "일본 시장 진출 전략": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "전시장 매니저": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "웹 퍼블리셔": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.29166666666666663
+    },
+    "오브제 디자이너": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "UI/UX 디자이너": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.29166666666666663
+    },
+    "고객 관리 담당자": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "법무 담당자": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "로봇 소프트웨어 엔지니어": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "딥러닝 연구원": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "조경 관리": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.75
+    },
+    "부동산 디벨로퍼": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.125
+    },
+    "정보보안 전문가": {
+      "total_queries": 4,
+      "hit_rate": 0.75,
+      "mrr": 0.41666666666666663
+    },
+    "기업 교육 운영": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "품질관리 전문가": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "보안 관리": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.75
+    },
+    "웹디자이너": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.625
+    },
+    "품질 보증 엔지니어": {
+      "total_queries": 3,
+      "hit_rate": 0.3333333333333333,
+      "mrr": 0.16666666666666666
+    },
+    "QA 엔지니어": {
+      "total_queries": 1,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "IoT 및 클라우드 개발": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "행사 기획자": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "시스템 엔지니어": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.625
+    },
+    "건설 사업 관리": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "고객 관리 전문가": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.16666666666666666
+    },
+    "세일즈 운영 전문가": {
+      "total_queries": 1,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "세일즈 운영": {
+      "total_queries": 1,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "콘텐츠 디자이너": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "정보보호 책임자": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "고객 상담 전문가": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "장비 유지보수": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.16666666666666666
+    },
+    "하드웨어 팀 리더": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "경영 지원": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.16666666666666666
+    },
+    "사업개발": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "물류 영업": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.25
+    },
+    "인테리어 담당자": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "모바일 애플리케이션 개발자": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "드론 하드웨어 개발": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "콘텐츠 기획 및 운영": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "매장 관리자": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "그래픽 디자이너": {
+      "total_queries": 4,
+      "hit_rate": 0.75,
+      "mrr": 0.41666666666666663
+    },
+    "리스크 관리 전문가": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "제품 디자이너": {
+      "total_queries": 4,
+      "hit_rate": 0.25,
+      "mrr": 0.125
+    },
+    "광고 기획": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "콘텐츠 개발자": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.25
+    },
+    "아트디렉터": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.6666666666666666
+    },
+    "커리어 매니저": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "정보보안 컨설턴트": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "공간 기획 디자이너": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "A/S 기술 지원": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.41666666666666663
+    },
+    "정보보안 분석가": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "고객 성공 매니저": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.25
+    },
+    "블록체인 개발자": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "게임 개발자": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "해외 영업": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "상품 관리": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.6
+    },
+    "세일즈 매니저": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.16666666666666666
+    },
+    "AI 디자이너": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "데이터 시각화 개발자": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "총무 및 경영 지원 역할": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "프로덕트 디자이너": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "배송 관리": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "홍보 전문가": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.125
+    },
+    "프론트엔드 개발자": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.125
+    },
+    "광고 크리에이티브 디렉터": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "부동산 프로젝트 관리자": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "콘텐츠 크리에이터": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "물류 관리": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "CRM 마케터": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "생산 MD": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.75
+    },
+    "콘텐츠 운영자": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "산업용 전자기기 수리": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "영업": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "기술 리더": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "회계 담당자": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.2
+    },
+    "전기 제어 엔지니어": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "품질관리 엔지니어": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "생산 관리": {
+      "total_queries": 4,
+      "hit_rate": 0.25,
+      "mrr": 0.25
+    },
+    "물류 담당자": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "교육 담당 영업": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "제품 개발자": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "온라인 MD": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.29166666666666663
+    },
+    "모바일 어플리케이션 개발자": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "퍼포먼스 마케터": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "소프트웨어 엔지니어": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "이벤트 기획자": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "반도체 설계": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "글로벌 마케팅 인턴": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "3D 웹 개발자": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.6666666666666666
+    },
+    "CEO 스태프": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "크리에이티브 디렉터": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.6666666666666666
+    },
+    "SCM 담당자": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.25
+    },
+    "상품기획": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "영업 관리": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "테라피스트": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "풀필먼트 운영": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.75
+    },
+    "마케팅 총괄": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "통번역가": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.6666666666666666
+    },
+    "재고 관리": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.29166666666666663
+    },
+    "R&D 엔지니어": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "AI 최적화 엔지니어": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "로봇 하드웨어 엔지니어": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "마케터": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "풀스택 개발자": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "프로모션 마케팅": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.625
+    },
+    "자동화 기기 설계 및 제어": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "응용프로그램 개발자": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "사내 법무": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "공정설계 및 제안영업": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "교육 상품 기획": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "SCM 매니저": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.75
+    },
+    "스포츠 마케팅": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.29166666666666663
+    },
+    "클라우드 시스템 운영": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "교육 운영 매니저": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.125
+    },
+    "제품 관리자": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "사이버 보안 전문가": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "상품 기획": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "배송 및 물류": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.25
+    },
+    "건축 설계": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "프로그램 관리자": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "세일즈 엔지니어": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "레벨 디자이너": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.75
+    },
+    "운영 지원": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "광학 개발": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.5
+    },
+    "품질 엔지니어": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "품질관리": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "웹 프론트엔드 개발": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.5
+    },
+    "아날로그 회로 설계": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.41666666666666663
+    },
+    "저널리스트": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.75
+    },
+    "정보보호 최고 책임자": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "그로스 마케팅": {
+      "total_queries": 2,
+      "hit_rate": 0.5,
+      "mrr": 0.125
+    },
+    "패션 디자이너": {
+      "total_queries": 1,
+      "hit_rate": 1.0,
+      "mrr": 0.5
+    },
+    "디자이너": {
+      "total_queries": 1,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "제품개발 관리": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "바텐더": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "데이터 담당자": {
+      "total_queries": 2,
+      "hit_rate": 0.0,
+      "mrr": 0.0
+    },
+    "해외주식 데스크 담당자": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "온사이트 마케팅": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0
+    },
+    "마케팅 영상 디자이너": {
+      "total_queries": 2,
+      "hit_rate": 1.0,
+      "mrr": 0.75
+    }
+  }
+}
