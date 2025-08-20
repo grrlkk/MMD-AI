@@ -2,118 +2,100 @@
 import json
 import os
 from collections import defaultdict
-from typing import Dict, List, Tuple
-from hybrid_retriever import hybrid_search # 위에서 제공된 리트리버 코드를 모듈로 가정
+from hybrid_retriever import hybrid_search
 
-def evaluate_retriever_and_save_results(data_path: str, top_k: int = 5):
-    """
-    전체 리트리버 성능을 평가하고, 직무별 상세 결과를 JSON 파일로 저장합니다.
-
-    Args:
-        data_path (str): 가짜 데이터셋이 담긴 JSON 파일 경로.
-        top_k (int): 리트리버가 반환할 상위 문서의 개수.
-    """
+def run_comparison_evaluation(data_path: str, top_k: int = 5):
     try:
-        file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), data_path)
-        with open(file_path, 'r', encoding='utf-8') as f:
+        with open(data_path, 'r', encoding='utf-8') as f:
             dataset = json.load(f)
-    except FileNotFoundError:
-        print(f"오류: '{file_path}' 파일을 찾을 수 없습니다. 경로를 다시 확인해주세요.")
-        return
-    except json.JSONDecodeError:
-        print(f"오류: '{file_path}' 파일이 유효한 JSON 형식이 아닙니다.")
+    except Exception as e:
+        print(f"파일 처리 중 오류: {e}")
         return
 
-    # 전체 및 직무별 성능 지표를 저장할 변수
-    overall_hit_count = 0
-    overall_reciprocal_rank_sum = 0
-    overall_total_queries = len(dataset)
+    # 리랭킹 ON/OFF 시나리오별 성능 지표를 저장할 변수
+    performance_metrics = {
+        'with_reranker': {'hit_count': 0, 'reciprocal_rank_sum': 0},
+        'without_reranker': {'hit_count': 0, 'reciprocal_rank_sum': 0}
+    }
+    total_queries = len(dataset)
     
-    category_results = defaultdict(lambda: {'hit_count': 0, 'reciprocal_rank_sum': 0, 'total_queries': 0})
+    # 공유를 위한 상세 비교 로그를 저장할 리스트
+    comparison_logs = []
 
-    print(f"--- 리트리버 성능 평가 시작 (총 {overall_total_queries}개 쿼리, top_k={top_k}) ---")
+    print(f"--- 리랭킹 ON/OFF 비교 평가 시작 (총 {total_queries}개 쿼리, top_k={top_k}) ---")
 
     for i, data_point in enumerate(dataset, 1):
         query_info = data_point['query']
         gold_doc_id = data_point['gold_doc_id']
-        category_name = query_info.get('candidate_interest', '기타')
-
-        # 리트리버 호출
-        _, retrieved_doc_ids, _ = hybrid_search(user_profile=query_info, top_k=top_k)
-
-        # 평가 지표 계산
-        rank = 0
-        for idx, doc_id in enumerate(retrieved_doc_ids):
-            if doc_id == gold_doc_id:
-                rank = idx + 1
-                break
         
-        # 전체 성능 지표 업데이트
-        if rank > 0:
-            overall_hit_count += 1
-            overall_reciprocal_rank_sum += 1 / rank
-            print(f"✅ 쿼리 {i}/{overall_total_queries}: 정답 문서 발견! 순위: {rank} (직무: {category_name})")
-        else:
-            print(f"❌ 쿼리 {i}/{overall_total_queries}: 정답 문서 미발견. 정답 ID: {gold_doc_id} (직무: {category_name})")
+        print(f"\n▶ 쿼리 {i}/{total_queries} 평가 중...")
+
+        # 1. 리랭킹 OFF로 실행 (1차 리트리버 결과)
+        scores_no_rerank, ids_no_rerank, docs_no_rerank = hybrid_search(user_profile=query_info, top_k=top_k, use_reranker=False)
         
-        # 직무별 성능 지표 업데이트
-        category_results[category_name]['total_queries'] += 1
-        if rank > 0:
-            category_results[category_name]['hit_count'] += 1
-            category_results[category_name]['reciprocal_rank_sum'] += 1 / rank
+        # 2. 리랭킹 ON으로 실행 (최종 결과)
+        scores_with_rerank, ids_with_rerank, docs_with_rerank = hybrid_search(user_profile=query_info, top_k=top_k, use_reranker=True)
 
-    # 최종 결과 계산
-    overall_hit_rate = overall_hit_count / overall_total_queries if overall_total_queries > 0 else 0
-    overall_mrr = overall_reciprocal_rank_sum / overall_total_queries if overall_total_queries > 0 else 0
-    
-    final_results = {
-        'overall': {
-            'total_queries': overall_total_queries,
-            'hit_rate': overall_hit_rate,
-            'mrr': overall_mrr,
-        },
-        'by_category': {}
-    }
-
-    print("\n" + "="*80)
-    print("⭐ 최종 종합 평가 결과 ⭐")
-    print(f"총 쿼리 수: {overall_total_queries}")
-    print(f"적중 쿼리 수: {overall_hit_count}")
-    print(f"평가 기준: 상위 {top_k}개 결과")
-    print(f"Hit Rate (적중률): {overall_hit_rate:.4f}")
-    print(f"MRR: {overall_mrr:.4f}")
-    print("="*80)
-
-    # 직무별 상세 결과 계산 및 출력
-    print("\n⭐ 직무별 상세 평가 결과 ⭐")
-    print("="*80)
-    for category, results in category_results.items():
-        category_hit_rate = results['hit_count'] / results['total_queries'] if results['total_queries'] > 0 else 0
-        category_mrr = results['reciprocal_rank_sum'] / results['total_queries'] if results['total_queries'] > 0 else 0
-        
-        print(f"▷ 직무: {category} (쿼리 수: {results['total_queries']}개)")
-        print(f"  - Hit Rate (적중률): {category_hit_rate:.4f}")
-        print(f"  - MRR: {category_mrr:.4f}")
-        print("-" * 80)
-
-        final_results['by_category'][category] = {
-            'total_queries': results['total_queries'],
-            'hit_rate': category_hit_rate,
-            'mrr': category_mrr
+        # 3. 두 결과를 하나의 로그로 종합
+        combined_log = {
+            "qid": data_point.get("qid"),
+            "query": query_info, # 전체 쿼리
+            "gold_doc_id": gold_doc_id, # 정답 문서
+            "without_reranker_results": [ # 리랭킹 안 한 결과 (리트리버 결과)
+                {"rank": r+1, "doc_id": doc_id, "score": score, "title": doc.get("title")}
+                for r, (score, doc_id, doc) in enumerate(zip(scores_no_rerank, ids_no_rerank, docs_no_rerank))
+            ],
+            "with_reranker_results": [ # 리랭킹 한 결과
+                {"rank": r+1, "doc_id": doc_id, "score": score, "title": doc.get("title")}
+                for r, (score, doc_id, doc) in enumerate(zip(scores_with_rerank, ids_with_rerank, docs_with_rerank))
+            ]
         }
-    
-    # 결과를 파일로 저장
-    output_file_name = "evaluation_results.json"
-    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), output_file_name)
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(final_results, f, ensure_ascii=False, indent=2)
-        
-    print(f"\n✅ 평가 결과가 '{output_file_name}' 파일에 저장되었습니다.")
+        comparison_logs.append(combined_log)
 
+        # 4. 각 시나리오별 성능 지표 계산
+        # 리랭킹 OFF
+        rank_no_rerank = next((idx + 1 for idx, doc_id in enumerate(ids_no_rerank) if doc_id == gold_doc_id), 0)
+        if rank_no_rerank > 0:
+            performance_metrics['without_reranker']['hit_count'] += 1
+            performance_metrics['without_reranker']['reciprocal_rank_sum'] += 1 / rank_no_rerank
+            
+        # 리랭킹 ON
+        rank_with_rerank = next((idx + 1 for idx, doc_id in enumerate(ids_with_rerank) if doc_id == gold_doc_id), 0)
+        if rank_with_rerank > 0:
+            performance_metrics['with_reranker']['hit_count'] += 1
+            performance_metrics['with_reranker']['reciprocal_rank_sum'] += 1 / rank_with_rerank
+            
+        print(f"  - 리랭킹 OFF 순위: {'미발견' if rank_no_rerank == 0 else rank_no_rerank}  |  리랭킹 ON 순위: {'미발견' if rank_with_rerank == 0 else rank_with_rerank}")
+
+    # --- 최종 결과 요약 및 저장 ---
+    summary_results = {}
+    print("\n" + "="*80)
+    print("⭐ 최종 종합 평가 결과: 리랭킹 적용 전/후 성능 비교 ⭐")
+    print("="*80)
+
+    for scenario, metrics in performance_metrics.items():
+        hit_rate = metrics['hit_count'] / total_queries if total_queries > 0 else 0
+        mrr = metrics['reciprocal_rank_sum'] / total_queries if total_queries > 0 else 0
+        
+        summary_results[scenario] = {'hit_rate': hit_rate, 'mrr': mrr}
+        
+        print(f"▷ 시나리오: {scenario.upper()}")
+        print(f"  - Hit Rate (적중률): {hit_rate:.4f}")
+        print(f"  - MRR (평균 역순위): {mrr:.4f}")
+        print("-" * 80)
+        
+    # 요약 파일 저장
+    summary_file_name = "evaluation_comparison_summary.json"
+    with open(summary_file_name, "w", encoding="utf-8") as f:
+        json.dump(summary_results, f, ensure_ascii=False, indent=2)
+    print(f"\n✅ 비교 평가 요약이 '{summary_file_name}' 파일에 저장되었습니다.")
+
+    # 상세 로그 파일 저장
+    detailed_log_file_name = "evaluation_comparison_logs.json"
+    with open(detailed_log_file_name, "w", encoding="utf-8") as f:
+        json.dump(comparison_logs, f, ensure_ascii=False, indent=2)
+    print(f"✅ 공유용 상세 비교 로그가 '{detailed_log_file_name}' 파일에 저장되었습니다.")
 
 if __name__ == "__main__":
-    # 이전에 만든 가짜 데이터 파일 경로
-    fake_data_file = "retriever_sample_data.json"
-    
-    # 평가 실행
-    evaluate_retriever_and_save_results(fake_data_file, top_k=5)
+    dataset_file = "retriever_sample_data.json"
+    run_comparison_evaluation(dataset_file, top_k=5)

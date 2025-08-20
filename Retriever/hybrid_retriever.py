@@ -108,62 +108,54 @@ def _format_hit_to_text(hit_source: dict) -> str:
     return "\n\n".join(lines)
 
 
-# --- 메인 검색 함수 (리랭킹 로직 추가) ---
-def hybrid_search(user_profile: dict, top_k: int = 5, exclude_ids: list = None) -> tuple[list[float], list[str], list[dict]]:
+# --- 메인 검색 함수 (use_reranker 플래그 추가) ---
+def hybrid_search(user_profile: dict, top_k: int = 5, exclude_ids: list = None, use_reranker: bool = True) -> tuple[list[float], list[str], list[dict]]:
     """
-    BM25 + 의미적 검색을 결합한 하이브리드 검색 후, 결과를 리랭킹합니다.
+    하이브리드 검색을 수행하고, use_reranker 플래그에 따라 선택적으로 리랭킹을 적용합니다.
     """
     opensearch = OpenSearchDB()
 
-    # ▼▼▼▼▼▼▼▼▼▼ 리랭킹 로직 시작 ▼▼▼▼▼▼▼▼▼▼
-
-    # 1단계: 후보군 확보 (Retrieval) - 리랭킹을 위해 더 많은 후보(top_k * 5)를 가져옴
-    retrieval_k = top_k * 5
-    print(f"🔍 1단계 (Retrieval): OpenSearch에서 후보군 {retrieval_k}개를 검색합니다.")
+    # 리랭커를 사용할 경우 더 많은 후보군(retrieval_k)을 가져오고, 사용하지 않으면 top_k만 가져옴
+    retrieval_k = top_k * 5 if use_reranker else top_k
+    
+    print(f"🔍 1단계 (Retrieval): OpenSearch에서 후보군 {retrieval_k}개를 검색합니다. (리랭킹: {'ON' if use_reranker else 'OFF'})")
     try:
         search_query = build_hybrid_query(user_profile, retrieval_k, exclude_ids)
         response = opensearch.search(search_query, size=retrieval_k)
-
     except Exception as e:
         print(f"❌ 하이브리드 검색 실패: {e}")
         return [], [], []
 
     initial_hits = response.get("hits", {}).get("hits", [])
     if not initial_hits:
-        print("검색 결과가 없습니다.")
         return [], [], []
     print(f"✅ 1단계 (Retrieval) 완료: {len(initial_hits)}개의 결과를 가져왔습니다.")
 
-
-    # 2단계: 리랭킹 (Reranking) - 가져온 결과의 순위를 재조정
-    print("\n🔄 2단계 (Reranking): 가져온 결과의 순위를 재조정합니다.")
-    reranker = get_reranker_model()
-    # 리랭킹에 사용할 질문 생성
-    rerank_query = f"{user_profile.get('candidate_interest', '')} {user_profile.get('candidate_question', '')}"
-
-    # 리랭커에 입력할 [질문, 문서] 쌍 만들기
-    sentence_pairs = [[rerank_query, _format_hit_to_text(hit.get('_source', {}))] for hit in initial_hits]
-
-    # 리랭킹 점수 계산
-    rerank_scores = reranker.predict(sentence_pairs, show_progress_bar=False)
-
-    # 리랭킹 점수와 기존 문서를 묶기
-    reranked_results = list(zip(rerank_scores, initial_hits))
-
-    # 새로운 점수 기준으로 내림차순 정렬
-    reranked_results.sort(key=lambda x: x[0], reverse=True)
-
-    # 최종 top_k 개의 결과만 선택
-    final_results = reranked_results[:top_k]
-
-    # 최종 결과 포맷팅
-    scores = [score for score, hit in final_results]
-    documents = [hit.get("_source", {}) for score, hit in final_results]
-    doc_ids = [hit.get("_id", "") for score, hit in final_results]
-
-    print(f"✅ 2단계 (Reranking) 완료: 최종 {len(scores)}개의 결과가 선택되었습니다.")
-    return scores, doc_ids, documents
-    # ▲▲▲▲▲▲▲▲▲▲ 리랭킹 로직 종료 ▲▲▲▲▲▲▲▲▲▲
+    # --- 2단계: 리랭킹 (use_reranker가 True일 때만 실행) ---
+    if use_reranker:
+        print("\n🔄 2단계 (Reranking): 가져온 결과의 순위를 재조정합니다.")
+        reranker = get_reranker_model()
+        rerank_query = f"{user_profile.get('candidate_interest', '')} {user_profile.get('candidate_question', '')}"
+        sentence_pairs = [[rerank_query, _format_hit_to_text(hit.get('_source', {}))] for hit in initial_hits]
+        rerank_scores = reranker.predict(sentence_pairs, show_progress_bar=False)
+        reranked_results = sorted(zip(rerank_scores, initial_hits), key=lambda x: x[0], reverse=True)
+        
+        final_results = reranked_results[:top_k]
+        
+        scores = [float(score) for score, hit in final_results] # score 타입을 float로 통일
+        documents = [hit.get("_source", {}) for score, hit in final_results]
+        doc_ids = [hit.get("_id", "") for score, hit in final_results]
+        
+        print(f"✅ 2단계 (Reranking) 완료: 최종 {len(scores)}개의 결과가 선택되었습니다.")
+        return scores, doc_ids, documents
+    
+    # --- 리랭킹을 사용하지 않을 경우 ---
+    else:
+        # OpenSearch의 점수와 결과를 그대로 반환
+        scores = [hit.get("_score", 0.0) for hit in initial_hits]
+        documents = [hit.get("_source", {}) for hit in initial_hits]
+        doc_ids = [hit.get("_id", "") for hit in initial_hits]
+        return scores, doc_ids, documents
 
 
 # --- 실행 부분 ---
