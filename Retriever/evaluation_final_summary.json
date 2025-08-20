@@ -1,0 +1,22 @@
+{
+  "sincere": {
+    "without_reranker": {
+      "hit_rate": 0.5634517766497462,
+      "mrr": 0.45490693739424715
+    },
+    "with_reranker": {
+      "hit_rate": 0.5786802030456852,
+      "mrr": 0.4580372250423011
+    }
+  },
+  "insincere": {
+    "without_reranker": {
+      "hit_rate": 0.350253807106599,
+      "mrr": 0.2811336717428088
+    },
+    "with_reranker": {
+      "hit_rate": 0.43147208121827413,
+      "mrr": 0.3327411167512691
+    }
+  }
+}
