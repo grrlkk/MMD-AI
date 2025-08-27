@@ -6,6 +6,7 @@ import boto3
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from DB.logger import setup_logger
+import certifi
 
 # 로거 설정
 logger = setup_logger(__name__)
@@ -51,10 +52,11 @@ class OpenSearchDB:
             hosts=[{'host': self.host, 'port': self.port}],
             http_auth=self.awsauth,
             use_ssl=True,
-            verify_certs=True,
             connection_class=RequestsHttpConnection,
             timeout=30,
             max_retries=3,
+            ca_certs=certifi.where(),
+            verify_certs=True,
             retry_on_timeout=True
         )
         
@@ -76,6 +78,22 @@ class OpenSearchDB:
         if missing_vars:
             raise ValueError(f"Missing required environment variables: {', '.join(missing_vars)}")
     
+    def count(self, query: dict, index_name: str = None) -> dict:
+            """
+            인덱스에서 쿼리에 해당하는 문서 수를 계산합니다.
+            """
+            if index_name is None:
+                index_name = self.index_name
+            try:
+                response = self.client.count(
+                    index=index_name,
+                    body=query
+                )
+                return response
+            except Exception as e:
+                self.logger.error(f"Error counting documents: {str(e)}")
+                raise
+        
     def test_connection(self):
         """
         OpenSearch 연결을 테스트합니다.
@@ -322,4 +340,14 @@ class OpenSearchDB:
             raise 
 
 if __name__ == "__main__":
+    print("OpenSearchDB 모듈을 직접 실행합니다. 연결 테스트를 시작합니다...")
     opensearch = OpenSearchDB()
+    
+    # 클래스에 정의된 연결 테스트 메서드 호출
+    is_connected = opensearch.test_connection()
+    
+    if is_connected:
+        print("✅ OpenSearch 연결에 성공했습니다!")
+    else:
+        print("❌ OpenSearch 연결에 실패했습니다. 에러 로그를 확인하세요.")
+
